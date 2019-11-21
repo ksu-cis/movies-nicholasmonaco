@@ -15,7 +15,9 @@
         }
 
         @foreach (var movie in Model.Movies) {
-            <div class="movie-entry">
+            <div class="movie-entry" data-title="@movie.Title" 
+                 data-mpaa="@movie.MPAA_Rating"
+                 data-imdb="@movie.IMDB_Rating">
                 <h2>
                     @movie.Title
                     @if (movie.Release_Year != null) {<span> (@movie.Release_Year) </span>}
@@ -45,9 +47,9 @@
 
     </div>
 
-    <form method="post">
+    <form method="post" id="search-and-filter-form">
         <h4>Search</h4>
-        <input type="text" name="search" value="@Model.search" />
+        <input type="text" name="search" value="@Model.search" id="search"/>
         <input type="submit" value="Search and Filter" />
 
         <h4>Filter by MPAA Rating</h4>
